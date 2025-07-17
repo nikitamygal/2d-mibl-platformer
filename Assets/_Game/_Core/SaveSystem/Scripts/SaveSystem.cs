@@ -8,13 +8,13 @@ namespace SoloGames.SaveLoad {
         public static string LevelIndex = "LevelIndex";
         public static int DefaultLevelIndex = 0;
 
-        public static int GetLevelIndex()
+        public static int GetCurrentLevelIndex()
         {
             if (!HasLevelIndexKey()) return DefaultLevelIndex;
             return PlayerPrefs.GetInt(LevelIndex);
         }
 
-        public static void SetLevelNumber(int level)
+        public static void SetCurrentLevelNumber(int level)
         {
             PlayerPrefs.SetInt(LevelIndex, level);
         }

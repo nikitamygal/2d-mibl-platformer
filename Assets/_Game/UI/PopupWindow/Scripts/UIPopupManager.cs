@@ -1,61 +1,75 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using SoloGames.UI;
 using UnityEngine;
 
-public class PopupManager : SingletonPerScene<PopupManager>
+namespace SoloGames.Managers
 {
+
     [Serializable]
-    public class PopupEntry
+    public class PopupEntity
     {
-        public PopupType popupType;
-        public GameObject popupObject;
+        public PopupTypes PopupType;
+        public UIPopup PopupUI;
     }
 
-    [Header("Popup Prefabs or Scene References")]
-    [SerializeField] private List<PopupEntry> popupEntries;
-
-    private Dictionary<PopupType, GameObject> _popupMap;
-    private GameObject _currentPopup;
-
-    protected override void Awake()
+    public class UIPopupManager : SingletonPerScene<UIPopupManager>
     {
-        base.Awake();
-        _popupMap = new Dictionary<PopupType, GameObject>();
+        [SerializeField] private RectTransform _overlay;
+        [SerializeField] private List<PopupEntity> _popups;
 
-        foreach (var entry in popupEntries)
+        private PopupEntity _currentPopup;
+
+        protected override void Awake()
         {
-            _popupMap[entry.popupType] = entry.popupObject;
-            entry.popupObject.SetActive(false);
+            base.Awake();
         }
-    }
 
-    public void ShowPopup(PopupType type)
-    {
-        HideCurrentPopup();
-
-        if (_popupMap.TryGetValue(type, out var popup))
+        private void Start()
         {
-            popup.SetActive(true);
-            _currentPopup = popup;
-
-            if (popup.TryGetComponent<IPopup>(out var popupScript))
-                popupScript.Show();
+            SetOverlayState(false);
+            HideAllPopups();
         }
-        else
+
+        public void SetOverlayState(bool state)
         {
-            Debug.LogWarning($"PopupManager: Popup of type {type} not found.");
+            if (_overlay == null) return;
+            _overlay.gameObject.SetActive(state);
         }
-    }
 
-    public void HideCurrentPopup()
-    {
-        if (_currentPopup != null)
+        public void HideAllPopups()
         {
-            if (_currentPopup.TryGetComponent<IPopup>(out var popupScript))
-                popupScript.Hide();
+            foreach (PopupEntity popup in _popups)
+            {
+                popup.PopupUI?.Hide();
+            }
+        }
 
-            _currentPopup.SetActive(false);
+        public PopupEntity GetPopupByType(PopupTypes popupType)
+        {
+            if (_popups.Count == 0) return null;
+            return _popups.FirstOrDefault(popup => popup.PopupType == popupType);
+        }
+
+        public void ShowPopup(PopupTypes type)
+        {
+            PopupEntity popupEntity = GetPopupByType(type);
+            if (popupEntity == null) return;
+            _currentPopup = popupEntity;
+
+            SetOverlayState(true);
+            _currentPopup.PopupUI?.Show();
+        }
+
+        public void HideCurrentPopup()
+        {
+            if (_currentPopup == null) return;
+
+            SetOverlayState(false);
+            _currentPopup.PopupUI?.Hide();
             _currentPopup = null;
         }
+
     }
 }

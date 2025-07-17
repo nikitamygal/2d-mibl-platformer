@@ -1,3 +1,4 @@
+using SoloGames.UI;
 using UnityEngine;
 
 namespace SoloGames.Managers
@@ -7,13 +8,11 @@ namespace SoloGames.Managers
 
         public virtual void Pause()
         {
-            GUIManager.Instance.SetPausePanel(true);
             ApplyTimeScale(0);
         }
 
         public virtual void UnPause()
         {
-            GUIManager.Instance.SetPausePanel(false);
             ApplyTimeScale(1);
         }
         

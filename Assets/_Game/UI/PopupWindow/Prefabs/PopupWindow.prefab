@@ -769,6 +769,7 @@ GameObject:
   - component: {fileID: 3555208587453969489}
   - component: {fileID: 508514124181298814}
   - component: {fileID: 6039419017095437198}
+  - component: {fileID: 4302266935534160545}
   m_Layer: 5
   m_Name: PopupWindow
   m_TagString: Untagged
@@ -839,6 +840,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4302266935534160545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4602882321133460091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b6a32a99949459abda19bfa48bc074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _btnClose: {fileID: 2025421046294643907}
+  _btnQuit: {fileID: 2125622656521585927}
 --- !u!1 &4701715335415288258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,6 +1208,7 @@ GameObject:
   - component: {fileID: 1356965160022775063}
   - component: {fileID: 7297283031671006261}
   - component: {fileID: 403602944932141748}
+  - component: {fileID: 1477027025739099688}
   m_Layer: 5
   m_Name: LblLevel
   m_TagString: Untagged
@@ -1258,6 +1274,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1477027025739099688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198918192667946160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2908c51b8ea894bf288cc7438972c8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelNumberPattern: Level {0}
+  _textLevel: {fileID: 5498673046706827219}
 --- !u!1 &8654838438813655911
 GameObject:
   m_ObjectHideFlags: 0

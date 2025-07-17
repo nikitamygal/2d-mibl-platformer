@@ -20,7 +20,7 @@ namespace SoloGames.Managers
 
         public LevelSettingsSO GetCurrentLevelSettings()
         {
-            int levelNumber = SaveSystem.GetLevelIndex();
+            int levelNumber = SaveSystem.GetCurrentLevelIndex();
             return _levelList.GetLevelSettings(levelNumber);
         }
 

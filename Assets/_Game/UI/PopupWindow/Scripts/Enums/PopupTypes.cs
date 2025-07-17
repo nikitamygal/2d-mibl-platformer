@@ -1,4 +1,4 @@
-public enum PopupType
+public enum PopupTypes
 {
     Pause,
     GameOver,

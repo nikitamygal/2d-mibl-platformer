@@ -15,7 +15,7 @@ namespace SoloGames.UI
 
         public void OnPause()
         {
-            GameplayManager.Instance.Pause();
+            UIPopupManager.Instance.ShowPopup(PopupTypes.Pause);
         }
 
         private void OnEnable()
