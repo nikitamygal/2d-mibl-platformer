@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using SoloGames.Cam;
 using SoloGames.Configs;
 using SoloGames.SaveLoad;
 using UnityEngine;
@@ -18,17 +19,23 @@ namespace SoloGames.Managers
             CreateLevelPrefab();
         }
 
-        public LevelSettingsSO GetCurrentLevelSettings()
+        private LevelSettingsSO GetCurrentLevelSettings()
         {
             int levelNumber = SaveSystem.GetCurrentLevelIndex();
             return _levelList.GetLevelSettings(levelNumber);
         }
 
-        public void CreateLevelPrefab()
+        private void CreateLevelPrefab()
         {
             if (_currentLevel == null || _currentLevel.LevelPrefab == null) return;
             GameObject levelObject = Instantiate(_currentLevel.LevelPrefab);
             levelObject.transform.position = Vector2.zero;
+        }
+
+        private void SetCameraFollowTarget()
+        {
+            // PlayerCharacter
+            // CameraFollow.Instance.SetTarget();
         }
     }
 }

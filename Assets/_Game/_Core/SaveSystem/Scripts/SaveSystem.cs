@@ -1,4 +1,3 @@
-using SoloGames.Configs;
 using UnityEngine;
 
 namespace SoloGames.SaveLoad {
