@@ -185,12 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcb42204001d73479d79a574ba4cf92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  _speed: 5
+  _animator: {fileID: 7020433231162738088}
   explodeParticles: {fileID: 0}
-  right: 1
-  moving: 1
-  shotSound: {fileID: 8300000, guid: 3454562e4e4243745b4a2391b5ac5465, type: 3}
-  explodeSound: {fileID: 8300000, guid: 619ce50616684f747a1b297f89d8bbc7, type: 3}
+  _shotSound: {fileID: 8300000, guid: ff4164bf15ce04dbab9dd2c869ee0ff8, type: 3}
+  _explodeSound: {fileID: 8300000, guid: 16d4e148c649d4f47a2fad143130bb41, type: 3}
 --- !u!82 &105734541920932601
 AudioSource:
   m_ObjectHideFlags: 0
@@ -304,7 +303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2700950990886080158
 Transform:
   m_ObjectHideFlags: 0

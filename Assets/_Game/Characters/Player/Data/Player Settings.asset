@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 10
   Attack: 10
+  MoveSpeed: 7
+  JumpForce: 10

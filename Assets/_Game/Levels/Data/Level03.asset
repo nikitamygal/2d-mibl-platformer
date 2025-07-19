@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Level03
   m_EditorClassIdentifier: 
   Name: Caves03
-  LevelPrefab: {fileID: 0}
+  LevelPrefab: {fileID: 4782417646809787554, guid: 51dcfbc0d09df4b5a95cb239c3ad3adc, type: 3}

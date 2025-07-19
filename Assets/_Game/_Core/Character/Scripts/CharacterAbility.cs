@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SoloGames.Gameplay
+namespace SoloGames.Character
 {
     public class CharacterAbility : MonoBehaviour
     {

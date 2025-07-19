@@ -4,7 +4,9 @@ namespace SoloGames.Gameplay
 {
     public class Gate : MonoBehaviour
     {
+        [Header("Bindings")]
         [SerializeField] private Animator _animator;
+        [SerializeField] private Collider2D _gateCollider;
 
         private bool _isOpen = false;
         private string _openParameter = "Open";
@@ -15,16 +17,20 @@ namespace SoloGames.Gameplay
             if (!_isOpen && other.tag == _tagToOpen)
             {
                 OpenGate();
+                DisableCollider();
             }
         }
 
         private void OpenGate()
         {
             _isOpen = true;
-            if (_animator != null)
-            {
-                _animator.SetTrigger(_openParameter);
-            }
+            _animator?.SetTrigger(_openParameter);
+        }
+
+        private void DisableCollider()
+        {
+            if (_gateCollider == null) return;
+            _gateCollider.enabled = false;
         }
     }
 }
