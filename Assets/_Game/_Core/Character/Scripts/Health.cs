@@ -11,8 +11,6 @@ namespace SoloGames.Character
         private float _currentHealth;
         private float _maxHealth;
         private Character _character;
-        private readonly string _damageAnimParam = "Damage";
-        private readonly string _deathAnimParam = "Death";
 
         public event Action OnHit;
         public event Action OnDeath;
@@ -44,7 +42,7 @@ namespace SoloGames.Character
         {
             SetHealth(_currentHealth - damage);
             OnHit?.Invoke();
-            _animator?.SetTrigger(_damageAnimParam);
+            _animator?.SetTrigger(AnimationParameters.Damage);
 
             if (_currentHealth <= 0)
             {
@@ -56,7 +54,7 @@ namespace SoloGames.Character
         public void Death()
         {
             SetHealth(0);
-            _animator?.SetTrigger(_deathAnimParam);
+            _animator?.SetTrigger(AnimationParameters.Death);
             OnDeath?.Invoke();
 
             if (_destroyOnDeath)

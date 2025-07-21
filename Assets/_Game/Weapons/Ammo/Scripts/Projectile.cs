@@ -10,9 +10,6 @@ namespace SoloGames.Gameplay
         [Header("Bindings")]
         [SerializeField] private Animator _animator;
 
-        [Header("Particles")]
-        [SerializeField] private GameObject explodeParticles;
-
         [Header("Sounds")]
         [SerializeField] private AudioClip _shotSound;
         [SerializeField] private AudioClip _explodeSound;
@@ -20,6 +17,7 @@ namespace SoloGames.Gameplay
         private AudioSource _audioSource;
         private bool _right = true;
         private bool _moving = true;
+        private readonly string _exolodeAnimParam = "Explode";
 
         private void Awake()
         {
@@ -39,17 +37,18 @@ namespace SoloGames.Gameplay
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (_moving && other.tag != "Player" && other.tag != "Shot" && other.tag != "IgnoreCollision")
+            if (_moving && other.tag != Tags.Player && other.tag != Tags.Shot)
             {
                 _moving = false;
                 _audioSource?.PlayOneShot(_explodeSound);
-                _animator?.SetTrigger("Explode");
+                _animator?.SetTrigger(_exolodeAnimParam);
+                Destroy();
             }
         }
 
-        void Destroy()
+        private void Destroy()
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 1f);
         }
     }
 }

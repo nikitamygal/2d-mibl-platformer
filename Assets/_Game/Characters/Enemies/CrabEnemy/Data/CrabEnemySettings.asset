@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9f0f134268448d2a738eb9e8875f4b, type: 3}
   m_Name: CrabEnemySettings
   m_EditorClassIdentifier: 
-  Health: 10
+  Health: 30
   Attack: 10
   MoveSpeed: 3
+  Acceleration: 10
+  Deceleration: 10
+  IdleThreshold: 0.05
   JumpForce: 0
+  GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 128

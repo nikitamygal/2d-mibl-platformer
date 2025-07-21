@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -705450701
-  m_SortingLayer: 2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c2c08c932c2054a0da13bc4dd9db298d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9210772448152054602}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a459e58da8dc0ac4c902cb8cb5e06ea6, type: 3}
   m_Name: 
@@ -304,8 +304,6 @@ MonoBehaviour:
   superParticles: {fileID: 0}
   jumpSound: {fileID: 0}
   landSound: {fileID: 0}
-  superJumpSound: {fileID: 0}
-  superJumpGroundSound: {fileID: 0}
   hurtSound: {fileID: 0}
 --- !u!114 &2470926502981898665
 MonoBehaviour:
@@ -325,9 +323,13 @@ MonoBehaviour:
   - {fileID: 19084484747376195}
   - {fileID: 5080114019594672482}
   - {fileID: 8169495609166367630}
+  _model: {fileID: 2854335185625180322}
   _health: {fileID: 850576972304453979}
+  _rigidbody: {fileID: 4504055722333930081}
   _spriteRenderer: {fileID: 545349960418739150}
   _animator: {fileID: 7404022932346205774}
+  _groundCheckPoint: {fileID: 1210677662258090426}
+  _groundCheckRadius: 0.1
 --- !u!114 &1332381865625161810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +354,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ceccd916df6c4682a0a6cbd2e843891, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _modelShouldFlip: 1
+  _modelFlipValueLeft: {x: -1, y: 1, z: 1}
+  _modelFlipValueRight: {x: 1, y: 1, z: 1}
+  _initialFacingDirection: 1
+  _absoluteThresholdMovement: 0.5
 --- !u!114 &5080114019594672482
 MonoBehaviour:
   m_ObjectHideFlags: 0

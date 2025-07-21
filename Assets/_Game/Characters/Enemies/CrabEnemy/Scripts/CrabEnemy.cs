@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using SoloGames;
 using UnityEngine;
 
 public class CrabEnemy : MonoBehaviour {
@@ -47,7 +48,7 @@ public class CrabEnemy : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Shot") {
+        if (other.tag == Tags.Shot) {
             health--;
             if (health == 0) {
                 Instantiate(deathEffect, transform.position, Quaternion.identity);

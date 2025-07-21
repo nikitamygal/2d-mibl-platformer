@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour {
 
     public AudioClip jumpSound;
     public AudioClip landSound;
-    public AudioClip superJumpSound;
-    public AudioClip superJumpGroundSound;
     public AudioClip hurtSound;
 
     public static PlayerController instance;
@@ -81,8 +79,6 @@ public class PlayerController : MonoBehaviour {
             bool wasSuper = superJump;
             superJump  = Physics2D.OverlapCircle(groundCheck.position, .02f, superGroundLayer);
             if (!wasSuper && superJump) {
-                // superParticles.Play();
-                audioSource.PlayOneShot(superJumpGroundSound);
             } else if (wasSuper && !superJump) {
                 // superParticles.Stop();
                 // superParticles.Clear();
@@ -101,7 +97,6 @@ public class PlayerController : MonoBehaviour {
             grounded = false;
             if (superJump) {
                 yVel = superJumpForce;
-                audioSource.PlayOneShot(superJumpSound);
             } else {
                 yVel = jumpForce;
                 audioSource.PlayOneShot(jumpSound);

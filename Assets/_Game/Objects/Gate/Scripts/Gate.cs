@@ -10,11 +10,10 @@ namespace SoloGames.Gameplay
 
         private bool _isOpen = false;
         private string _openParameter = "Open";
-        private string _tagToOpen = "Shot";
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (!_isOpen && other.tag == _tagToOpen)
+            if (!_isOpen && other.tag == Tags.Shot)
             {
                 OpenGate();
                 DisableCollider();

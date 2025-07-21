@@ -10,11 +10,9 @@ namespace SoloGames.Gameplay
     {
         [SerializeField] private TransitionType _transition;
 
-        private string _tagToOpen = "Player";
-
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == _tagToOpen)
+            if (other.tag == Tags.Player)
             {
                 SceneTransition();
             }
