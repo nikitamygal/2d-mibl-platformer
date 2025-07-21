@@ -1,9 +1,8 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace SoloGames.Managers
 {
-    public class SceneLoader : SingletonPerScene<SceneLoader>
+    public class SceneLoader
     {
         public void LoadScene(string sceneName)
         {

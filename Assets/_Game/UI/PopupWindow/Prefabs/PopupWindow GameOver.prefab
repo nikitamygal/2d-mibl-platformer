@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PopupWindow GameOver
       objectReference: {fileID: 0}
+    - target: {fileID: 4602882321133460091, guid: 57f65675a9a2e44a780029142d722abf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4712812311468466066, guid: 57f65675a9a2e44a780029142d722abf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -3,33 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using SoloGames.UI;
 using UnityEngine;
+using Zenject;
 
 namespace SoloGames.Managers
 {
-
     [Serializable]
     public class PopupEntity
     {
         public PopupTypes PopupType;
+        public GameObject PopupPrefab;
         public UIPopup PopupUI;
     }
 
-    public class UIPopupManager : SingletonPerScene<UIPopupManager>
+    public class UIPopupManager : MonoBehaviour
     {
         [SerializeField] private RectTransform _overlay;
         [SerializeField] private List<PopupEntity> _popups;
 
+        [Inject] private DiContainer _container;
         private PopupEntity _currentPopup;
-
-        protected override void Awake()
-        {
-            base.Awake();
-        }
 
         private void Start()
         {
+            CreatePopups();
             SetOverlayState(false);
             HideAllPopups();
+        }
+
+        private void CreatePopups()
+        {
+            foreach (PopupEntity popup in _popups)
+            {
+                GameObject instance = _container.InstantiatePrefab(popup.PopupPrefab);
+                instance.transform.SetParent(transform, worldPositionStays: false);
+                instance.transform.localPosition = Vector2.zero;
+                popup.PopupUI = instance.GetComponent<UIPopup>();
+            }
         }
 
         public void SetOverlayState(bool state)

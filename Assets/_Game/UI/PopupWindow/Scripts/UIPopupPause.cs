@@ -1,6 +1,7 @@
 using SoloGames.Managers;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 
 namespace SoloGames.UI
@@ -9,22 +10,30 @@ namespace SoloGames.UI
     {
         [SerializeField] private Button _btnContinue;
 
+        private GameplayManager _gameplayManager;
+
+        [Inject]
+        public void Construct(GameplayManager gameplayManager)
+        {
+            _gameplayManager = gameplayManager;
+        }
+
         public override void Show()
         {
             base.Show();
-            GameplayManager.Instance.Pause();
+            _gameplayManager?.Pause();
         }
 
         public override void Hide()
         {
             base.Hide();
-            GameplayManager.Instance.UnPause();
+            _gameplayManager?.UnPause();
         }
 
         public override void OnClosePopup()
         {
             base.OnClosePopup();
-            GameplayManager.Instance.UnPause();
+            _gameplayManager?.UnPause();
         }
 
         protected override void BindListeners()

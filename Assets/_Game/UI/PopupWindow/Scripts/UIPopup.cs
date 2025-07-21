@@ -1,8 +1,7 @@
 using SoloGames.Managers;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Zenject;
 
 
 namespace SoloGames.UI
@@ -12,6 +11,16 @@ namespace SoloGames.UI
         [SerializeField] private Button _btnClose;
         [SerializeField] private Button _btnQuit;
 
+        private UIPopupManager _popupManager;
+        private SceneLoader _sceneLoader;
+
+        [Inject]
+        public void Construct(UIPopupManager popupManager, SceneLoader sceneLoader)
+        {
+            _popupManager = popupManager;
+            _sceneLoader = sceneLoader;
+        }
+        
         public virtual void Show()
         {
             gameObject.SetActive(true);
@@ -24,12 +33,12 @@ namespace SoloGames.UI
 
         public virtual void OnClosePopup()
         {
-            UIPopupManager.Instance.HideCurrentPopup();
+            _popupManager?.HideCurrentPopup();
         }
 
         public virtual void OnQuit()
         {
-            SceneManager.LoadScene("MainMenu"); // TODO change to service
+            _sceneLoader?.LoadScene(Scenes.MainMenu);
         }
 
         protected virtual void BindListeners()

@@ -1,41 +1,44 @@
-using System.Collections.Generic;
-using SoloGames.Cam;
 using SoloGames.Configs;
 using SoloGames.SaveLoad;
 using UnityEngine;
+using Zenject;
+
 
 namespace SoloGames.Managers
 {
-    public class LevelManager : SingletonPerScene<LevelManager>
+    public class LevelManager : MonoBehaviour
     {
-        [SerializeField] private LevelListSO _levelList;
-
         protected LevelSettingsSO _currentLevel;
+        private LevelListSO _levelList;
+        private SaveSystem _saveSystem;
+        private DiContainer _container;
 
-        protected override void Awake()
+        [Inject]
+        public void Construct(LevelListSO levelList, SaveSystem saveSystem, DiContainer container)
         {
-            base.Awake();
+            _levelList = levelList;
+            _saveSystem = saveSystem;
+            _container = container;
+        }
+
+        private void Start()
+        {
             _currentLevel = GetCurrentLevelSettings();
             CreateLevelPrefab();
         }
 
         private LevelSettingsSO GetCurrentLevelSettings()
         {
-            int levelNumber = SaveSystem.GetCurrentLevelIndex();
+            int levelNumber = _saveSystem.GetCurrentLevelIndex();
             return _levelList.GetLevelSettings(levelNumber);
         }
 
         private void CreateLevelPrefab()
         {
             if (_currentLevel == null || _currentLevel.LevelPrefab == null) return;
-            GameObject levelObject = Instantiate(_currentLevel.LevelPrefab);
+            GameObject levelObject = _container.InstantiatePrefab(_currentLevel.LevelPrefab);
             levelObject.transform.position = Vector2.zero;
         }
 
-        private void SetCameraFollowTarget()
-        {
-            // PlayerCharacter
-            // CameraFollow.Instance.SetTarget();
-        }
     }
 }

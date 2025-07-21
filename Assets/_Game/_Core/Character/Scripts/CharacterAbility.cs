@@ -1,5 +1,6 @@
 using SoloGames.Managers;
 using UnityEngine;
+using Zenject;
 
 namespace SoloGames.Character
 {
@@ -7,11 +8,17 @@ namespace SoloGames.Character
 	{
 		protected Character _character;
 		protected Health _health;
-		protected InputManager _inputManager => InputManager.Instance; // TODO temp
+		protected InputManager _inputManager;
 		protected bool _abilityInitialized = false;
 
 		public virtual bool AbilityInitialized { get { return _abilityInitialized; } }
 
+        [Inject]
+        public void Construct(InputManager inputManager)
+        { 
+            _inputManager = inputManager;
+        }
+		
 		private void Awake()
 		{
 			PreInitialization();

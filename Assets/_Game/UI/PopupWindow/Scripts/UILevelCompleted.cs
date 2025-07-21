@@ -1,6 +1,7 @@
 using SoloGames.Managers;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 
 namespace SoloGames.UI
@@ -9,9 +10,17 @@ namespace SoloGames.UI
     {
         [SerializeField] private Button _btnNext;
 
+        private SceneLoader _sceneLoader;
+
+        [Inject]
+        public void Construct(SceneLoader sceneLoader)
+        {
+            _sceneLoader = sceneLoader;
+        }
+        
         public void OnNextLevel()
-        { 
-            Debug.Log("OnNextLevel click");
+        {
+            _sceneLoader.LoadScene(Scenes.GamePlay);
         }
 
         protected override void BindListeners()

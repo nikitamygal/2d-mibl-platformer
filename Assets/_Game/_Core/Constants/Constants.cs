@@ -19,4 +19,10 @@ namespace SoloGames
         public const string Death = "Death";
     }
 
+    public static class Scenes
+    {
+        public const string MainMenu = "MainMenu";
+        public const string GamePlay = "GamePlay";
+    }
+
 }

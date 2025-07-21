@@ -1,5 +1,6 @@
 using SoloGames.Managers;
 using UnityEngine;
+using Zenject;
 
 namespace SoloGames.UI
 {
@@ -8,7 +9,13 @@ namespace SoloGames.UI
     {
         [SerializeField] private float _axisValue;
 
-        private InputManager _inputManager => InputManager.Instance; // TODO temp
+        private InputManager _inputManager;
+
+        [Inject]
+        public void Construct(InputManager inputManager)
+        {
+            _inputManager = inputManager;
+        }
 
         public override void OnButtonDown()
         {

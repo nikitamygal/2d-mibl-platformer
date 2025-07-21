@@ -1,6 +1,7 @@
 using SoloGames.Managers;
 using SoloGames.SaveLoad;
 using UnityEngine;
+using Zenject;
 
 namespace SoloGames.Gameplay
 {
@@ -9,6 +10,16 @@ namespace SoloGames.Gameplay
     public class GateSceneTransition : MonoBehaviour
     {
         [SerializeField] private TransitionType _transition;
+
+        private SaveSystem _saveSystem;
+        private UIPopupManager _popupManager;
+
+        [Inject]
+        public void Construct(SaveSystem saveSystem, UIPopupManager popupManager)
+        {
+            _saveSystem = saveSystem;
+            _popupManager = popupManager;
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -20,13 +31,13 @@ namespace SoloGames.Gameplay
 
         private void SceneTransition()
         {
-            int currentLevelIndex = SaveSystem.GetCurrentLevelIndex();
+            int currentLevelIndex = _saveSystem.GetCurrentLevelIndex();
             int nextLevelIndex = _transition == TransitionType.Forward ? currentLevelIndex + 1 : currentLevelIndex - 1;
             if (nextLevelIndex < 0)
                 nextLevelIndex = 0;
 
-            SaveSystem.SetCurrentLevelNumber(nextLevelIndex);
-            SceneLoader.Instance.LoadScene("GamePlay");
+            _saveSystem.SetCurrentLevelNumber(nextLevelIndex);
+            _popupManager.ShowPopup(PopupTypes.LevelCompleted);
         }
     }
 }

@@ -1,11 +1,9 @@
-using SoloGames.UI;
 using UnityEngine;
 
 namespace SoloGames.Managers
 {
-    public class GameplayManager : SingletonPerScene<GameplayManager>
+    public class GameplayManager
     {
-
         public virtual void Pause()
         {
             ApplyTimeScale(0);

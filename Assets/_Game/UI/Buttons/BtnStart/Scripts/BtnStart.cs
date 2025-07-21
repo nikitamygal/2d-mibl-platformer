@@ -6,35 +6,36 @@ using Zenject;
 namespace SoloGames.UI
 {
     [RequireComponent(typeof(Button))]
-    public class BtnPause : MonoBehaviour
+    public class BtnStart : MonoBehaviour
     {
         private Button _btn;
-        private UIPopupManager _popupManager;
+        private SceneLoader _sceneLoader;
 
         [Inject]
-        public void Construct(UIPopupManager popupManager)
+        public void Construct(SceneLoader sceneLoader)
         {
-            _popupManager = popupManager;
+            _sceneLoader = sceneLoader;
         }
-        
+
         private void Awake()
         {
             _btn = GetComponent<Button>();
+            ProjectContext.Instance.Container.Inject(this);
         }
 
-        public void OnPause()
+        public void OnStart()
         {
-            _popupManager?.ShowPopup(PopupTypes.Pause);
+            _sceneLoader.LoadScene(Scenes.GamePlay);
         }
 
         private void OnEnable()
         {
-            _btn?.onClick.AddListener(OnPause);
+            _btn?.onClick.AddListener(OnStart);
         }
 
         private void OnDisable()
         {
-            _btn?.onClick.RemoveListener(OnPause);
+            _btn?.onClick.RemoveListener(OnStart);
         }
 
     }

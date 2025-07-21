@@ -3,7 +3,7 @@ using UnityEngine;
 namespace SoloGames.Cam
 {
 
-    public class CameraFollow : SingletonPerScene<CameraFollow>
+    public class CameraFollow : MonoBehaviour
     {
         [SerializeField] private Transform _target;
         [SerializeField] private float _smoothTime = 0.25f;

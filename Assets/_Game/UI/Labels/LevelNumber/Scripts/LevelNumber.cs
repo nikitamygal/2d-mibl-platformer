@@ -1,6 +1,7 @@
 using SoloGames.SaveLoad;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 
 namespace SoloGames.UI
@@ -10,6 +11,19 @@ namespace SoloGames.UI
         [SerializeField] private string levelPattern = "Level {0}";
         [SerializeField] private TextMeshProUGUI _textLevel;
 
+        private SaveSystem _saveSystem;
+
+        [Inject]
+        public void Construct(SaveSystem saveSystem)
+        {
+            _saveSystem = saveSystem;
+        }
+
+        private void Awake()
+        {
+            ProjectContext.Instance.Container.Inject(this);
+        }
+
         private void Start()
         {
             SetLevelNumber();
@@ -18,7 +32,7 @@ namespace SoloGames.UI
         private void SetLevelNumber()
         {
             if (_textLevel == null) return;
-            int level = SaveSystem.GetCurrentLevelIndex();
+            int level = _saveSystem.GetCurrentLevelIndex();
             _textLevel.text = string.Format(levelPattern, level + 1);
         }
     }
