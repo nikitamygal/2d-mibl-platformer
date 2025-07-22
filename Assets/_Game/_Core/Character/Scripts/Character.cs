@@ -2,7 +2,7 @@ using SoloGames.Configs;
 using SoloGames.Tools;
 using UnityEngine;
 
-namespace SoloGames.Character
+namespace SoloGames.Characters
 {
     public enum ConditionStates
     {
@@ -43,6 +43,7 @@ namespace SoloGames.Character
 
         #region GETTERS
         public CharacterSettingsSO Settings => _settings;
+        public FacingDirections FaceDirection = FacingDirections.East;
         public GameObject CharacterModel => _model;
         public Animator CharacterAnimator => _animator;
         public SpriteRenderer CharacterSpriteRenderer => _spriteRenderer;

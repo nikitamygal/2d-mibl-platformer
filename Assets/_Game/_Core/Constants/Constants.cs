@@ -15,8 +15,11 @@ namespace SoloGames
     {
         public const string Idle = "Idle";
         public const string Running = "Running";
+        public const string Jumping = "Jumping";
+        public const string Shooting = "Shooting";
         public const string Damage = "Damage";
         public const string Death = "Death";
+        public const string Grounded = "Grounded";
     }
 
     public static class Scenes

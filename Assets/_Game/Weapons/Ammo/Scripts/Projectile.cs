@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-namespace SoloGames.Gameplay
+namespace SoloGames.Characters
 {
     public class Projectile : MonoBehaviour
     {
@@ -15,6 +15,7 @@ namespace SoloGames.Gameplay
         [SerializeField] private AudioClip _explodeSound;
 
         private AudioSource _audioSource;
+        private Character _owner = null;
         private bool _right = true;
         private bool _moving = true;
         private readonly string _exolodeAnimParam = "Explode";
@@ -26,7 +27,13 @@ namespace SoloGames.Gameplay
 
         private void Start()
         {
+            _right = _owner?.FaceDirection == FacingDirections.East;
             _audioSource?.PlayOneShot(_shotSound);
+        }
+
+        public void SetOwner(Character character)
+        {
+            _owner = character;
         }
 
         private void Update()

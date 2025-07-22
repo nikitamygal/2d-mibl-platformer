@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SoloGames.Character
+namespace SoloGames.Characters
 {
 
     public class CharacterMovement : CharacterAbility

@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 30
   Attack: 10
-  MoveSpeed: 7
-  Acceleration: 10
-  Deceleration: 10
+  AttackInterval: 0.5
+  MoveSpeed: 8
+  Acceleration: 0
+  Deceleration: 0
   IdleThreshold: 0.05
-  JumpForce: 10
+  JumpForce: 6
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 128

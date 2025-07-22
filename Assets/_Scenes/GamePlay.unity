@@ -1042,6 +1042,7 @@ GameObject:
   - component: {fileID: 600018690}
   - component: {fileID: 600018689}
   - component: {fileID: 600018688}
+  - component: {fileID: 600018691}
   m_Layer: 5
   m_Name: BtnJump
   m_TagString: Untagged
@@ -1151,6 +1152,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600018686}
   m_CullTransparentMesh: 1
+--- !u!114 &600018691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600018686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50dc263b1c844f9dab88c87ce5cacc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &609026571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,6 +1850,7 @@ GameObject:
   - component: {fileID: 1334224827}
   - component: {fileID: 1334224826}
   - component: {fileID: 1334224825}
+  - component: {fileID: 1334224828}
   m_Layer: 5
   m_Name: BtnFire
   m_TagString: Untagged
@@ -1946,6 +1960,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334224823}
   m_CullTransparentMesh: 1
+--- !u!114 &1334224828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334224823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 217ee5b1898b6431aac45479a4c2e5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1436247392
 GameObject:
   m_ObjectHideFlags: 0

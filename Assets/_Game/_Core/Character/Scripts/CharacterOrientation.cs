@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SoloGames.Character
+namespace SoloGames.Characters
 {
     public class CharacterOrientation : CharacterAbility
     {
@@ -40,12 +40,13 @@ namespace SoloGames.Character
 
                 if (checkedDirection >= 0)
                 {
-                    FaceDirection(1);
+                    _character.FaceDirection = FacingDirections.East;
                 }
                 else
                 {
-                    FaceDirection(-1);
+                    _character.FaceDirection = FacingDirections.West;
                 }
+                Face(_character.FaceDirection);
             }                
 		}
 

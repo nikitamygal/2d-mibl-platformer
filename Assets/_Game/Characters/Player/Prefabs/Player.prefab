@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7159849534578692583}
   m_Father: {fileID: 1832043730410213872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &545349960418739150
@@ -130,12 +131,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5496996402698376441}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.16, y: 0.04, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.15999998, y: 0.039999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1832043730410213872}
+  m_Father: {fileID: 2204158772733713285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8866873030779096214
 GameObject:
@@ -179,7 +180,6 @@ GameObject:
   - component: {fileID: 1832043730410213872}
   - component: {fileID: 1352747966573641906}
   - component: {fileID: 4504055722333930081}
-  - component: {fileID: 6905995181088688607}
   - component: {fileID: 2470926502981898665}
   - component: {fileID: 1332381865625161810}
   - component: {fileID: 19084484747376195}
@@ -207,7 +207,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2204158772733713285}
-  - {fileID: 7159849534578692583}
   - {fileID: 1210677662258090426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -261,7 +260,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: de00408573e800c40b63c14a782a856e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -273,38 +272,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6905995181088688607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9210772448152054602}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a459e58da8dc0ac4c902cb8cb5e06ea6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7404022932346205774}
-  sp: {fileID: 545349960418739150}
-  xSpeed: 7
-  jumpForce: 10
-  superJumpForce: 25
-  groundCheck: {fileID: 1210677662258090426}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  shootPosition: {fileID: 7159849534578692583}
-  shotPrefab: {fileID: 7020433231162738093, guid: a1f4f167c24947f47bcbd2c8c18b01d9, type: 3}
-  shotTime: 0.5
-  superJumpUnlocked: 0
-  superGroundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  superParticles: {fileID: 0}
-  jumpSound: {fileID: 0}
-  landSound: {fileID: 0}
-  hurtSound: {fileID: 0}
 --- !u!114 &2470926502981898665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,6 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc0f48e0fd0f34e4da49a29c2dfdcb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gunSpawnPoint: {fileID: 7159849534578692583}
+  _projectilePrefab: {fileID: 7020433231162738093, guid: a1f4f167c24947f47bcbd2c8c18b01d9, type: 3}
 --- !u!114 &850576972304453979
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ namespace SoloGames.Configs
     {
         public float Health = 10f;
         public float Attack = 10f;
+        public float AttackInterval = 0.5f;
         public float MoveSpeed = 7f;
         public float Acceleration = 10f;
         public float Deceleration = 10f;

@@ -2,7 +2,7 @@ using SoloGames.Managers;
 using UnityEngine;
 using Zenject;
 
-namespace SoloGames.Character
+namespace SoloGames.Characters
 {
 	public class CharacterAbility : MonoBehaviour
 	{

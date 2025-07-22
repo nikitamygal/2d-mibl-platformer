@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace SoloGames.Character
+namespace SoloGames.Characters
 {
     public class Health : MonoBehaviour
     {
