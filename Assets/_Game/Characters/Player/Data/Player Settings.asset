@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a9f0f134268448d2a738eb9e8875f4b, type: 3}
   m_Name: Player Settings
   m_EditorClassIdentifier: 
-  Health: 30
-  Attack: 10
+  Health: 20
+  AttackDamage: 10
   AttackInterval: 0.5
   MoveSpeed: 8
   Acceleration: 0
   Deceleration: 0
   IdleThreshold: 0.05
-  JumpForce: 6
+  JumpForce: 15
+  KnockbackDirection: {x: 15, y: 5}
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 128

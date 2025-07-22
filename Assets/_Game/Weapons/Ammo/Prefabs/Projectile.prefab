@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcb42204001d73479d79a574ba4cf92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 15
   _animator: {fileID: 652062753346528884}
   _shotSound: {fileID: 8300000, guid: ff4164bf15ce04dbab9dd2c869ee0ff8, type: 3}
   _explodeSound: {fileID: 8300000, guid: 16d4e148c649d4f47a2fad143130bb41, type: 3}

@@ -5,73 +5,69 @@ namespace SoloGames.Characters
 {
     public class CharacterJump : CharacterAbility
     {
-        protected float _settingsJumpForce => _character.Settings.JumpForce;
-		protected bool _buttonReleased = false;
-		protected bool _jumpStopped = false;
-        protected bool _hasJumped;
+        protected float _jumpForce => _character.Settings.JumpForce;
+
+        private bool _jumpPressed = false;
+        private bool _hasJumped = false;
 
         public override void ProcessAbility()
         {
             base.ProcessAbility();
             HandleInput();
+            HandleState();
         }
 
         protected void HandleInput()
-        { 
-            if (_character.ConditionState.CurrentState != ConditionStates.Normal)
-            {
-                return;
-            }
+        {
+            if (_character.ConditionState.CurrentState != ConditionStates.Normal) return;
+
             if (_inputManager.JumpButton.State.CurrentState == ButtonStates.ButtonDown)
             {
-                JumpStart();
+                _jumpPressed = true;
             }
+
             if (_inputManager.JumpButton.State.CurrentState == ButtonStates.ButtonUp)
             {
-                _buttonReleased = true;
+                _jumpPressed = false;
             }
         }
 
-        private void FixedUpdate()
+        protected void HandleState()
         {
-            // if (_jumpStopped) return;
-
-            if (_character.MovementState.CurrentState == MovementStates.Jumping && !_hasJumped)
+            // Jumping
+            if (_jumpPressed)
             {
-                _character.Rigidbody.AddForce(Vector2.up * _settingsJumpForce, ForceMode2D.Impulse);
-                _hasJumped = true;
+                if (_character.Grounded && !_hasJumped)
+                {
+                    _character.MovementState.ChangeState(MovementStates.Jumping);
+                    _hasJumped = true;
+                    Jump();
+                }
             }
 
-            if (_character.Grounded)
+            // Landing
+            if (_character.JustGotGrounded && _hasJumped)
             {
-                if (_hasJumped)
+                _hasJumped = false;
+
+                if (_character.MovementState.CurrentState is MovementStates.Falling or MovementStates.Jumping)
                 {
                     _character.MovementState.ChangeState(MovementStates.Idle);
-                    _hasJumped = false;
-                    JumpStop();
                 }
             }
         }
 
-        protected virtual void JumpStart()
+        protected void Jump()
         {
-            _character.MovementState.ChangeState(MovementStates.Jumping);
-
-            // _jumpStopped = false;
-            _buttonReleased = false;
+            if (_character.MovementState.CurrentState != MovementStates.Jumping) return;
+            _character.Rigidbody.velocity = new Vector2(_character.Rigidbody.velocity.x, 0f);
+            _character.Rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
         }
-
-		protected virtual void JumpStop()
-		{
-			// _jumpStopped = true;
-			_character.MovementState.ChangeState(MovementStates.Idle);
-			_buttonReleased = false;
-		}
 
         public override void UpdateAnimator()
         {
-            _character.CharacterAnimator.SetBool(AnimationParameters.Jumping, _character.MovementState.CurrentState == MovementStates.Jumping);
-            _character.CharacterAnimator.SetBool(AnimationParameters.Grounded, _character.JustGotGrounded);
+            _character.CharacterAnimator.SetBool(AnimationParameters.Jumping, _hasJumped && _character.MovementState.CurrentState == MovementStates.Jumping);
+            _character.CharacterAnimator.SetBool(AnimationParameters.Grounded, _character.Grounded);
         }
     }
 }

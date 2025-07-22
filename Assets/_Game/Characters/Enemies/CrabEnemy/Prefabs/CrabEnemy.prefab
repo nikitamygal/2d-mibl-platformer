@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 847096251038964944}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.003, y: -0.163, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1557, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,8 +43,7 @@ GameObject:
   - component: {fileID: 7064431050007204084}
   - component: {fileID: 5642330110333669927}
   - component: {fileID: 5946569102687453679}
-  - component: {fileID: 8110919962387604997}
-  - component: {fileID: 7111634306248261652}
+  - component: {fileID: 4203692024178954262}
   - component: {fileID: 8863595031844339997}
   m_Layer: 6
   m_Name: CrabEnemy
@@ -102,8 +101,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03}
-  m_Size: {x: 0.16, y: 0.25}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.16, y: 0.3}
   m_Direction: 0
 --- !u!50 &5642330110333669927
 Rigidbody2D:
@@ -146,13 +145,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: ac11ac045f5064c238cd6c5ee0da5974, type: 2}
   _abilities:
-  - {fileID: 7111634306248261652}
-  - {fileID: 8110919962387604997}
+  - {fileID: 4203692024178954262}
+  _model: {fileID: 6291714762396678372}
   _health: {fileID: 8863595031844339997}
   _rigidbody: {fileID: 5642330110333669927}
   _spriteRenderer: {fileID: 8601157727632364424}
   _animator: {fileID: 1588737296629048840}
---- !u!114 &8110919962387604997
+  _groundCheckPoint: {fileID: 6917875841784250876}
+  _groundCheckRadius: 0.1
+  FaceDirection: 0
+--- !u!114 &4203692024178954262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,19 +163,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1089650357340257036}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ceccd916df6c4682a0a6cbd2e843891, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7111634306248261652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089650357340257036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16b0db9ec8e4b4bc1a0f5aefcae8d76b, type: 3}
+  m_Script: {fileID: 11500000, guid: b41a44039ef58461a9959ccee6167236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8863595031844339997
@@ -188,7 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4838b559728460db4220e0552fdb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _addKnockbackOnDamage: 1
   _destroyOnDeath: 1
+  _disableColliderOnDeath: 1
+  _delayBeforeDestruction: 2
   _animator: {fileID: 1588737296629048840}
 --- !u!1 &6291714762396678372
 GameObject:
@@ -201,6 +194,7 @@ GameObject:
   - component: {fileID: 7951867371796351939}
   - component: {fileID: 8601157727632364424}
   - component: {fileID: 1588737296629048840}
+  - component: {fileID: 8160955400642820917}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -296,3 +290,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8160955400642820917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6291714762396678372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cae8a30e28f4ee39806ea8bbd4160b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _disableModelOnDeath: 1

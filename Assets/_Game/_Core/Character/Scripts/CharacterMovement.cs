@@ -47,6 +47,7 @@ namespace SoloGames.Characters
         protected void CheckForFalling()
         {
             if (!_character.Grounded
+                && _character.Rigidbody.velocity.y < 0
                 && (_character.ConditionState.CurrentState == ConditionStates.Normal)
                 && (
                     (_character.MovementState.CurrentState == MovementStates.Running)

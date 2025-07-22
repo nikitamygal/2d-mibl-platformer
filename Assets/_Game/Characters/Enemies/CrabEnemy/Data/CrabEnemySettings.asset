@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: CrabEnemySettings
   m_EditorClassIdentifier: 
   Health: 30
-  Attack: 10
+  AttackDamage: 10
+  AttackInterval: 0.5
   MoveSpeed: 3
-  Acceleration: 10
-  Deceleration: 10
+  Acceleration: 0
+  Deceleration: 0
   IdleThreshold: 0.05
   JumpForce: 0
+  KnockbackDirection: {x: 2, y: 1}
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 128

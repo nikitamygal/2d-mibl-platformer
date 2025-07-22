@@ -17,7 +17,7 @@ namespace SoloGames
         public const string Running = "Running";
         public const string Jumping = "Jumping";
         public const string Shooting = "Shooting";
-        public const string Damage = "Damage";
+        public const string Hit = "Hit";
         public const string Death = "Death";
         public const string Grounded = "Grounded";
     }
