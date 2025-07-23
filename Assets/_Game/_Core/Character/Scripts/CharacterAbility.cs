@@ -12,6 +12,7 @@ namespace SoloGames.Characters
 		protected bool _abilityInitialized = false;
 
 		public virtual bool AbilityInitialized { get { return _abilityInitialized; } }
+		public virtual bool IsControlledByInput { get { return _character.ControlledBy == ControlType.Input; } }
 
         [Inject]
         public void Construct(InputManager inputManager)

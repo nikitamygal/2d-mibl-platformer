@@ -8,8 +8,8 @@ namespace SoloGames.UI
 {
     public class UIPopup : MonoBehaviour, IPopup
     {
-        [SerializeField] private Button _btnClose;
-        [SerializeField] private Button _btnQuit;
+        [SerializeField] protected Button _btnClose;
+        [SerializeField] protected Button _btnQuit;
 
         private UIPopupManager _popupManager;
         private SceneLoader _sceneLoader;

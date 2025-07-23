@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: ac11ac045f5064c238cd6c5ee0da5974, type: 2}
+  _controlledBy: 1
   _abilities:
   - {fileID: 4203692024178954262}
   _model: {fileID: 6291714762396678372}

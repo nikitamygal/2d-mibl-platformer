@@ -14,7 +14,7 @@ namespace SoloGames.Characters
         protected float _currentHealth;
         protected float _maxHealth;
         protected Character _character;
-        protected Collider _collider;
+        protected Collider2D _collider;
         protected Vector2 _knockbackSettings => _character.Settings.KnockbackDirection;
 
         public event Action OnHit;
@@ -28,7 +28,7 @@ namespace SoloGames.Characters
         private void Initialization()
         {
             _character = this.gameObject.GetComponentInParent<Character>();
-            _collider = this.gameObject.GetComponent<Collider>();
+            _collider = this.gameObject.GetComponent<Collider2D>();
             GetAnimator();
             SetCurrentHealth();
         }
@@ -67,6 +67,11 @@ namespace SoloGames.Characters
             SetHealth(0);
             _animator?.SetTrigger(AnimationParameters.Death);
             OnDeath?.Invoke();
+
+            if (_character.Rigidbody != null)
+            {
+                _character.Rigidbody.simulated = false;
+            }
 
             if (_disableColliderOnDeath && _collider != null)
             {

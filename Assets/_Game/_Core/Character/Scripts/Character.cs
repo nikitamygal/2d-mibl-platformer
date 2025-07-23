@@ -21,11 +21,13 @@ namespace SoloGames.Characters
 	}
     
     public enum FacingDirections { West, East }
+    public enum ControlType { Input, AI }
 
     public class Character : MonoBehaviour
     {
         [Header("Settings")]
         [SerializeField] private CharacterSettingsSO _settings;
+        [SerializeField] private ControlType _controlledBy = ControlType.Input;
 
         [Header("Abilities")]
         [SerializeField] private CharacterAbility[] _abilities;
@@ -43,6 +45,7 @@ namespace SoloGames.Characters
 
         #region GETTERS
         public CharacterSettingsSO Settings => _settings;
+        public ControlType ControlledBy => _controlledBy;
         public FacingDirections FaceDirection = FacingDirections.East;
         public GameObject CharacterModel => _model;
         public Animator CharacterAnimator => _animator;

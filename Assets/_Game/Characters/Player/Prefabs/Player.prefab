@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 5080114019594672482}
   - component: {fileID: 8169495609166367630}
   - component: {fileID: 850576972304453979}
+  - component: {fileID: 5264493230445797042}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -384,3 +385,15 @@ MonoBehaviour:
   _disableColliderOnDeath: 1
   _delayBeforeDestruction: 2
   _animator: {fileID: 7404022932346205774}
+--- !u!114 &5264493230445797042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9210772448152054602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d25d711b3aaa41c799a71a2fe8a1537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
